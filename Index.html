@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Ahmad Faisal — Software Engineer</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;700&family=Sora:wght@300;400;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- Network canvas background -->
+  <canvas id="network"></canvas>
+
+  <!-- NAV -->
+  <nav class="nav">
+    <span class="nav-name">ahmad faisal</span>
+    <ul class="nav-links">
+      <li><a href="#experience" class="nav-link">experience</a></li>
+      <li><a href="#projects"   class="nav-link">projects</a></li>
+      <li><a href="#skills"     class="nav-link">skills</a></li>
+      <li><a href="#education"  class="nav-link">education</a></li>
+      <li>
+        <a href="mailto:ahmad100.fa100@gmail.com" class="nav-link nav-contact">contact</a>
+      </li>
+      <li>
+        <button id="themeBtn" class="theme-btn" aria-label="toggle theme">
+          <span class="theme-icon">◑</span>
+        </button>
+      </li>
+    </ul>
+  </nav>
+
+  <!-- MAIN CONTENT -->
+  <main class="main">
+
+    <!-- HERO -->
+    <section class="hero" id="hero">
+      <div class="hero-tag">// software engineer</div>
+      <h1 class="hero-name">Ahmad<br /><span class="hero-accent">Faisal</span></h1>
+      <p class="hero-bio">
+        Full-stack engineer &amp; ML practitioner. I build things end-to-end —
+        from cloud-backed APIs to predictive models — and I care deeply about
+        clean architecture and meaningful software.
+      </p>
+      <div class="hero-links">
+        <a href="https://github.com/ahmadfa100"              target="_blank" class="pill">github ↗</a>
+        <a href="https://linkedin.com/in/ahmad-faisal-dev/"  target="_blank" class="pill">linkedin ↗</a>
+        <a href="mailto:ahmad100.fa100@gmail.com"            class="pill">email ↗</a>
+      </div>
+      <div class="hero-certs">
+        <span class="cert-badge">☁ AWS Certified Cloud Practitioner</span>
+        <span class="cert-badge">⚡ Fundamentals of Deep Learning — Nvidia</span>
+      </div>
+    </section>
+
+    <!-- EXPERIENCE -->
+    <section class="section" id="experience">
+      <h2 class="section-title">experience</h2>
+
+      <div class="timeline">
+
+        <div class="timeline-item">
+          <div class="timeline-meta">
+            <span class="timeline-date">Sep 2025 – Jan 2026</span>
+          </div>
+          <div class="timeline-body">
+            <p class="timeline-role">Full Stack ASP.NET Developer</p>
+            <p class="timeline-company">Qualify You <span class="timeline-type">Bootcamp</span></p>
+            <ul class="timeline-points">
+              <li>Built a real-time interactive web app using ASP.NET Web API &amp; React.js from the ground up.</li>
+              <li>Led backend architecture, API design, and frontend–backend integration.</li>
+              <li>Coordinated the dev team during the final phase and ensured on-time delivery.</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="timeline-item">
+          <div class="timeline-meta">
+            <span class="timeline-date">Jun 2024 – Sep 2024</span>
+          </div>
+          <div class="timeline-body">
+            <p class="timeline-role">Web Development Trainee</p>
+            <p class="timeline-company">Clever Mind POB</p>
+            <ul class="timeline-points">
+              <li>Developed and optimised 3+ real-world web projects in HTML, CSS, and JavaScript.</li>
+              <li>Built a complete project from scratch: planning → design → development → deployment.</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="timeline-item">
+          <div class="timeline-meta">
+            <span class="timeline-date">Jul 2022 – Oct 2022</span>
+          </div>
+          <div class="timeline-body">
+            <p class="timeline-role">CCNA Level 1 Trainee</p>
+            <p class="timeline-company">CTS <span class="timeline-type">Volunteer</span></p>
+            <ul class="timeline-points">
+              <li>Hands-on labs covering OSI/TCP-IP, subnetting, VLANs, switching, and routing.</li>
+              <li>Configured Cisco devices; performed OS installation and DHCP/DNS setup.</li>
+            </ul>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- PROJECTS -->
+    <section class="section" id="projects">
+      <h2 class="section-title">projects</h2>
+
+      <div class="projects-grid">
+
+        <div class="project-card">
+          <div class="project-header">
+            <span class="project-name">Green Bridge</span>
+            <span class="project-status">ML + Full Stack</span>
+          </div>
+          <p class="project-desc">
+            Topic classification platform using LDA and LSTM models on large-scale datasets.
+            Improved coherence score by <strong>20%</strong> through preprocessing &amp; hyperparameter optimisation.
+          </p>
+          <div class="project-stack">
+            <span>React</span><span>Node.js</span><span>Express</span>
+            <span>WebSockets</span><span>PostgreSQL</span><span>Python</span>
+          </div>
+        </div>
+
+        <div class="project-card">
+          <div class="project-header">
+            <span class="project-name">Lightsek</span>
+            <span class="project-status">Social Platform</span>
+          </div>
+          <p class="project-desc">
+            Full-stack social media platform with OAuth 2.0, WebSockets, search-engine queries,
+            and an activity feed. Grew to <strong>50+ users</strong>.
+          </p>
+          <div class="project-stack">
+            <span>ASP.NET</span><span>React</span><span>PostgreSQL</span>
+            <span>OAuth 2.0</span><span>WebSockets</span>
+          </div>
+        </div>
+
+        <div class="project-card">
+          <div class="project-header">
+            <span class="project-name">Bus Ticket System</span>
+            <span class="project-status">Enterprise App</span>
+          </div>
+          <p class="project-desc">
+            Comprehensive bus-ticketing platform supporting multiple user roles, discount schemes,
+            and an admin dashboard for full ticket lifecycle management.
+          </p>
+          <div class="project-stack">
+            <span>Java Servlets</span><span>JSP</span><span>PostgreSQL</span>
+            <span>Apache Tomcat</span><span>MVC</span>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- SKILLS -->
+    <section class="section" id="skills">
+      <h2 class="section-title">skills</h2>
+
+      <div class="skills-grid">
+        <div class="skills-group">
+          <p class="skills-label">languages</p>
+          <div class="skills-tags">
+            <span>Python</span><span>C#</span><span>C++</span><span>Java</span>
+            <span>JavaScript</span><span>TypeScript</span><span>PHP</span>
+            <span>SQL</span><span>Bash</span>
+          </div>
+        </div>
+
+        <div class="skills-group">
+          <p class="skills-label">frameworks &amp; tools</p>
+          <div class="skills-tags">
+            <span>ASP.NET Core</span><span>React.js</span><span>Node.js</span>
+            <span>Docker</span><span>Git</span><span>Figma</span>
+            <span>N8N</span><span>Jupyter</span>
+          </div>
+        </div>
+
+        <div class="skills-group">
+          <p class="skills-label">data &amp; ML</p>
+          <div class="skills-tags">
+            <span>NumPy</span><span>Pandas</span><span>LDA</span><span>LSTM</span>
+            <span>Machine Learning</span><span>Deep Learning</span><span>LLM</span>
+          </div>
+        </div>
+
+        <div class="skills-group">
+          <p class="skills-label">cloud &amp; databases</p>
+          <div class="skills-tags">
+            <span>AWS</span><span>Azure</span><span>PostgreSQL</span>
+            <span>MongoDB</span><span>SQL Server</span><span>Linux</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- EDUCATION -->
+    <section class="section" id="education">
+      <h2 class="section-title">education</h2>
+
+      <div class="edu-card">
+        <div class="edu-left">
+          <p class="edu-degree">B.Sc. Software Engineering</p>
+          <p class="edu-school">Jordan University of Science and Technology</p>
+        </div>
+        <div class="edu-right">
+          <span class="edu-gpa">GPA 3.33</span>
+          <span class="edu-year">2025</span>
+        </div>
+      </div>
+
+      <h3 class="sub-title">completed courses</h3>
+      <div class="courses-list">
+        <div class="course-item">
+          <span class="course-name">Python for Data Science &amp; ML Bootcamp</span>
+          <span class="course-meta">Udemy · 25h · 2026</span>
+        </div>
+        <div class="course-item">
+          <span class="course-name">Fundamentals of Azure</span>
+          <span class="course-meta">Microsoft · 24h · 2026</span>
+        </div>
+        <div class="course-item">
+          <span class="course-name">ASP.NET Core (MVC) Development</span>
+          <span class="course-meta">The Hope International Edu · 40h · 2025</span>
+        </div>
+        <div class="course-item">
+          <span class="course-name">Full-Stack Web Development (MERN)</span>
+          <span class="course-meta">Udemy · 61h · 2025</span>
+        </div>
+        <div class="course-item">
+          <span class="course-name">CCNA: Introduction to Networks</span>
+          <span class="course-meta">Cisco · 14h · 2025</span>
+        </div>
+        <div class="course-item">
+          <span class="course-name">Coach You Programme</span>
+          <span class="course-meta">Ministry of Digital Economy · 6 months · 2025</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+      <div class="footer-socials">
+        <a href="https://github.com/ahmadfa100"             target="_blank">github</a>
+        <a href="https://linkedin.com/in/ahmad-faisal-dev/" target="_blank">linkedin</a>
+        <a href="mailto:ahmad100.fa100@gmail.com">email</a>
+        <a href="tel:+962798692428">+962 79 869 2428</a>
+      </div>
+      <p class="footer-copy">© <span id="footer-year"></span> Ahmad Faisal bani Hamad</p>
+    </footer>
+
+  </main>
+
+  <script src="background.js"></script>
+  <script src="main.js"></script>
+</body>
+</html>
