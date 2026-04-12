@@ -1,0 +1,248 @@
+{
+  "nbformat": 4,
+  "nbformat_minor": 0,
+  "metadata": {
+    "colab": {
+      "provenance": [],
+      "gpuType": "T4",
+      "mount_file_id": "1XW-gS2zJm2H38DMM40PqjqXRp_LiX5Z_",
+      "authorship_tag": "ABX9TyMhud34etLhZ3rYZDnEsMTY",
+      "include_colab_link": true
+    },
+    "kernelspec": {
+      "name": "python3",
+      "display_name": "Python 3"
+    },
+    "language_info": {
+      "name": "python"
+    },
+    "accelerator": "GPU"
+  },
+  "cells": [
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "view-in-github",
+        "colab_type": "text"
+      },
+      "source": [
+        "<a href=\"https://colab.research.google.com/github/ahmadfa100/-Ahmad-bani-Hamad/blob/main/CCN%20model\" target=\"_parent\"><img src=\"https://colab.research.google.com/assets/colab-badge.svg\" alt=\"Open In Colab\"/></a>"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": 4,
+      "metadata": {
+        "id": "Dk7Y0REwDZJC",
+        "colab": {
+          "base_uri": "https://localhost:8080/",
+          "height": 211
+        },
+        "outputId": "b228fa4b-bece-43d2-ec67-840f18b1e9ec"
+      },
+      "outputs": [
+        {
+          "output_type": "error",
+          "ename": "FileNotFoundError",
+          "evalue": "[Errno 2] No such file or directory: '/content/train/daisy'",
+          "traceback": [
+            "\u001b[0;31m---------------------------------------------------------------------------\u001b[0m",
+            "\u001b[0;31mFileNotFoundError\u001b[0m                         Traceback (most recent call last)",
+            "\u001b[0;32m/tmp/ipykernel_1748/3270206597.py\u001b[0m in \u001b[0;36m<cell line: 0>\u001b[0;34m()\u001b[0m\n\u001b[1;32m     17\u001b[0m \u001b[0;32mfor\u001b[0m \u001b[0mcls\u001b[0m \u001b[0;32min\u001b[0m \u001b[0mclasses\u001b[0m\u001b[0;34m:\u001b[0m\u001b[0;34m\u001b[0m\u001b[0;34m\u001b[0m\u001b[0m\n\u001b[1;32m     18\u001b[0m     \u001b[0mcls_path\u001b[0m \u001b[0;34m=\u001b[0m \u001b[0mos\u001b[0m\u001b[0;34m.\u001b[0m\u001b[0mpath\u001b[0m\u001b[0;34m.\u001b[0m\u001b[0mjoin\u001b[0m\u001b[0;34m(\u001b[0m\u001b[0msourceDir\u001b[0m\u001b[0;34m,\u001b[0m \u001b[0mcls\u001b[0m\u001b[0;34m)\u001b[0m\u001b[0;34m\u001b[0m\u001b[0;34m\u001b[0m\u001b[0m\n\u001b[0;32m---> 19\u001b[0;31m     \u001b[0mimages\u001b[0m \u001b[0;34m=\u001b[0m \u001b[0mos\u001b[0m\u001b[0;34m.\u001b[0m\u001b[0mlistdir\u001b[0m\u001b[0;34m(\u001b[0m\u001b[0mcls_path\u001b[0m\u001b[0;34m)\u001b[0m\u001b[0;34m\u001b[0m\u001b[0;34m\u001b[0m\u001b[0m\n\u001b[0m\u001b[1;32m     20\u001b[0m     \u001b[0mnp\u001b[0m\u001b[0;34m.\u001b[0m\u001b[0mrandom\u001b[0m\u001b[0;34m.\u001b[0m\u001b[0mshuffle\u001b[0m\u001b[0;34m(\u001b[0m\u001b[0mimages\u001b[0m\u001b[0;34m)\u001b[0m\u001b[0;34m\u001b[0m\u001b[0;34m\u001b[0m\u001b[0m\n\u001b[1;32m     21\u001b[0m \u001b[0;34m\u001b[0m\u001b[0m\n",
+            "\u001b[0;31mFileNotFoundError\u001b[0m: [Errno 2] No such file or directory: '/content/train/daisy'"
+          ]
+        }
+      ],
+      "source": [
+        "import tensorflow as tf\n",
+        "import numpy as np\n",
+        "import pandas as pd\n",
+        "import shutil\n",
+        "import os\n",
+        "\n",
+        "\n",
+        "\n",
+        "sourceDir = '/content/train'\n",
+        "baseDir = '/content/flower_split'\n",
+        "classes = ['daisy','dandelion','rose','sunflower', 'tulip']\n",
+        "\n",
+        "for split in ['train', 'validation', 'test']:\n",
+        "    for cls in classes:\n",
+        "        os.makedirs(os.path.join(baseDir, split, cls), exist_ok=True)\n",
+        "\n",
+        "for cls in classes:\n",
+        "    cls_path = os.path.join(sourceDir, cls)\n",
+        "    images = os.listdir(cls_path)\n",
+        "    np.random.shuffle(images)\n",
+        "\n",
+        "    train_idx = int(len(images) * 0.7)\n",
+        "    val_idx = int(len(images) * 0.9)\n",
+        "\n",
+        "    for i, img in enumerate(images):\n",
+        "        src = os.path.join(cls_path, img)\n",
+        "        if i < train_idx:\n",
+        "            shutil.copy(src, os.path.join(baseDir, 'train', cls, img))\n",
+        "        elif i < val_idx:\n",
+        "            shutil.copy(src, os.path.join(baseDir, 'validation', cls, img))\n",
+        "        else:\n",
+        "            shutil.copy(src, os.path.join(baseDir, 'test', cls, img))\n",
+        "\n",
+        "print(\"successfuly partioned!\")\n",
+        "\n",
+        "\n",
+        "\n",
+        "\n",
+        "\n"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "!find /content -name \"daisy\"\n"
+      ],
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "7fHkUADyG1J0",
+        "outputId": "83395286-1f64-40cd-921f-55df5b0797f2"
+      },
+      "execution_count": 6,
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "/content/flower_split/train/daisy\n",
+            "/content/flower_split/validation/daisy\n",
+            "/content/flower_split/test/daisy\n",
+            "/content/content/flower_split/train/daisy\n",
+            "/content/content/flower_split/validation/daisy\n",
+            "/content/content/flower_split/test/daisy\n"
+          ]
+        }
+      ]
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "class Config:\n",
+        "    image_height = 224\n",
+        "    image_width = 224\n",
+        "    channels = 3\n",
+        "\n",
+        "    batch_size = 32\n",
+        "    epochs = 10\n",
+        "    learning_rate = 0.0001\n",
+        "\n",
+        "    classes = ['daisy', 'dandelion', 'rose', 'sunflower', 'tulip']\n",
+        "    num_classes = len(classes)"
+      ],
+      "metadata": {
+        "id": "bGAGpWc8InZB"
+      },
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "import os\n",
+        "from tensorflow.keras.preprocessing.image import ImageDataGenerator\n",
+        "\n",
+        "def create_data_generators(config):\n",
+        "    BASE_DIR = '/content/flower_split'\n",
+        "    TRAIN_DIR = os.path.join(BASE_DIR, 'train')\n",
+        "    VAL_DIR = os.path.join(BASE_DIR, 'validation')\n",
+        "    TEST_DIR = os.path.join(BASE_DIR, 'test')\n",
+        "\n",
+        "    train_datagen = ImageDataGenerator(\n",
+        "        rescale=1./255,\n",
+        "        rotation_range= 20,\n",
+        "        width_shift_range=0.2,\n",
+        "        height_shift_range=0.2,\n",
+        "        shear_range=0.2,\n",
+        "        zoom_range=0.2,\n",
+        "        horizontal_flip=True,\n",
+        "        fill_mode='nearest'\n",
+        "    )\n",
+        "\n",
+        "    val_test_datagen = ImageDataGenerator(rescale=1./255)\n",
+        "\n",
+        "    train_generator = train_datagen.flow_from_directory(\n",
+        "        TRAIN_DIR,\n",
+        "        target_size=(config.image_height, config.image_width),\n",
+        "        batch_size=config.batch_size,\n",
+        "        class_mode='categorical',\n",
+        "        shuffle=True\n",
+        "    )\n",
+        "\n",
+        "    validation_generator = val_test_datagen.flow_from_directory(\n",
+        "        VAL_DIR,\n",
+        "        target_size=(config.image_height, config.image_width),\n",
+        "        batch_size=config.batch_size,\n",
+        "        class_mode='categorical',\n",
+        "        shuffle=False\n",
+        "    )\n",
+        "\n",
+        "    test_generator = val_test_datagen.flow_from_directory(\n",
+        "        TEST_DIR,\n",
+        "        target_size=(config.image_height, config.image_width),\n",
+        "        batch_size=config.batch_size,\n",
+        "        class_mode='categorical',\n",
+        "        shuffle=False\n",
+        "    )\n",
+        "\n",
+        "    return train_generator, validation_generator, test_generator"
+      ],
+      "metadata": {
+        "id": "HMcpRWIAK5AB"
+      },
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "#CCN\n",
+        "def build_cnn_model():\n",
+        "    model = models.Sequential([\n",
+        "            #block 1\n",
+        "            layers.cover2D(32, (3,3), activation='relu', padding='same',\n",
+        "                           input_shape=(config.image_width,config.image_width,3)),\n",
+        "            layers.batch_normalization(),\n",
+        "            layers.cover2D(32, (3,3), activation='relu', padding='same'),\n",
+        "            layers.batch_normalization(),\n",
+        "            layers.MaxPooling2D(2,2),\n",
+        "            layers.Dropout(0.2),\n",
+        "\n",
+        "            #block 2\n",
+        "            layers.cover2D(32, (3,3), activation='relu', padding='same',\n",
+        "                           input_shape=(config.image_width,config.image_width,3)),\n",
+        "            layers.batch_normalization(),\n",
+        "            layers.cover2D(32, (3,3), activation='relu', padding='same'),\n",
+        "            layers.batch_normalization(),\n",
+        "            layers.MaxPooling2D(2,2),\n",
+        "            layers.Dropout(0.2),\n",
+        "\n",
+        "            #block 3\n",
+        "            layers.cover2D(32, (3,3), activation='relu', padding='same',\n",
+        "                           input_shape=(config.image_width,config.image_width,3)),\n",
+        "            layers.batch_normalization(),\n",
+        "            layers.cover2D(32, (3,3), activation='relu', padding='same'),\n",
+        "            layers.batch_normalization(),\n",
+        "            layers.MaxPooling2D(2,2),\n",
+        "            layers.Dropout(0.2),\n",
+        "\n",
+        "\n",
+        "    ])\n",
+        "\n"
+      ],
+      "metadata": {
+        "id": "rbbUA3ssP2ta"
+      },
+      "execution_count": null,
+      "outputs": []
+    }
+  ]
+}
